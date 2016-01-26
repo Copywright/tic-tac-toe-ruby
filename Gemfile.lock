@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    colorize (0.7.7)
+    minitest (5.8.4)
+    table_print (1.5.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  colorize
+  minitest
+  table_print
+
+BUNDLED WITH
+   1.11.2

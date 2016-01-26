@@ -1,5 +1,6 @@
 class Piece
-  attr_reader :value, :position
+  attr_reader :position
+  attr_accessor :value
 
   def initialize(pos)
     @value = ""
