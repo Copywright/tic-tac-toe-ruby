@@ -17,15 +17,15 @@ _/  |_|__| ____   _/  |______    ____   _/  |_  ____   ____
 
   def insert_piece(position, value, board = @board)
     case position
-    when 1 then board[103] = value
-    when 2 then board[116] = value
-    when 3 then board[130] = value
-    when 4 then board[412] = value
-    when 5 then board[426] = value
-    when 6 then board[440] = value
-    when 7 then board[681] = value
-    when 8 then board[695] = value
-    when 9 then board[709] = value
+    when 0 then board[102] = value
+    when 1 then board[116] = value
+    when 2 then board[130] = value
+    when 3 then board[439] = value
+    when 4 then board[452] = value
+    when 5 then board[466] = value
+    when 6 then board[734] = value
+    when 7 then board[747] = value
+    when 8 then board[761] = value
     end
   end
 
@@ -36,8 +36,8 @@ _/  |_|__| ____   _/  |______    ____   _/  |_  ____   ____
   end
 
   def build_board(board)
-    pieces    = board.spaces.flatten
     new_board = empty_board
+    pieces    = board.spaces.flatten
     pieces.each do |p|
       insert_piece(p.position, p.value, new_board) unless p.value.empty?
     end
@@ -48,20 +48,20 @@ _/  |_|__| ____   _/  |______    ____   _/  |_  ____   ____
     "
                           |            |
                           |            |
-                          |            |
-                          |            |
-                          |            |
-             _____________|____________|_______________
-                          |            |
-                          |            |
-                          |            |
-                          |            |
+                          |            |                                 *
                           |            |
                           |            |
              _____________|____________|_______________
                           |            |
                           |            |
                           |            |
+                          |            |                                 *
+                          |            |
+                          |            |
+             _____________|____________|_______________
+                          |            |
+                          |            |
+                          |            |                                 *
                           |            |
                           |            |"
   end

@@ -54,6 +54,8 @@ class BoardTest < MiniTest::Test
         @board.assign_piece(positions, "O")
       end
 
+      binding.pry
+
       assert_equal false, @board.available_spaces.any? {|i| i <= 2 }  # 0, 1, 2 (first row) filled.
     end
   end
