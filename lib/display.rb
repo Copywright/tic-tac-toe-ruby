@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Display
   attr_reader :board
 
@@ -9,6 +11,60 @@ _/  |_|__| ____   _/  |______    ____   _/  |_  ____   ____
  |__| |__|\___  >  |__| (____  /\___  >  |__|  \____/ \___  >
               \/             \/     \/                    \/
 ".red.on_white.blink
+  end
+
+  def self.choose_piece
+    puts "Would you like to be 'X' or 'O'?\n\n".yellow.on_white
+  end
+
+  def self.you_are(choice)
+    puts "You are '#{choice.red}'.\n\n".green
+  end
+
+  def self.invalid_choice
+    puts "Oops! Sorry, that wasn't a valid response. Try again! \n\n".red.on_white
+  end
+
+  def self.choose_row
+    puts "Which row would you like to place in? (1-3)\n\n".yellow.on_white
+  end
+
+  def self.choose_column
+    puts "Which column would you like to place in? (1-3)\n\n".yellow.on_white
+  end
+
+
+  def self.play_again
+    puts "Would you like to play again?\n\n"
+  end
+
+  def self.game_has_begun
+    puts " ___   ___         ___         ___   ___   ___   ___   ___
+    |     |   | |\ /| |           |       |   |   | |   |   |
+    | +-  |-+-| | + | |-+-         -+-    +   |-+-| |-+-    +
+    |   | |   | |   | |               |   |   |   | |  \    |
+    ---               ---         ---
+    ".green.on_white.blink
+  end
+
+  def self.winner
+    puts "'||' '|'  ..|''||   '||'  '|'    '|| '||'  '|' '||' '|.   '|'
+  || |   .|'    ||   ||    |      '|. '|.  .'   ||   |'|   |
+   ||    ||      ||  ||    |       ||  ||  |    ||   | '|. |
+   ||    '|.     ||  ||    |        ||| |||     ||   |   |||
+  .||.    ''|...|'    '|..'          |   |     .||. .|.   '|
+
+                                                              \n\n\n".green.on_white.blink
+  end
+
+  def self.loser
+    puts "
+_/      _/    _/_/    _/    _/      _/          _/_/      _/_/_/  _/_/_/_/
+ _/  _/    _/    _/  _/    _/      _/        _/    _/  _/        _/
+  _/      _/    _/  _/    _/      _/        _/    _/    _/_/    _/_/_/
+ _/      _/    _/  _/    _/      _/        _/    _/        _/  _/
+_/        _/_/      _/_/        _/_/_/_/    _/_/    _/_/_/    _/_/_/_/
+                                                                             \n\n\n".red.on_white.blink
   end
 
   def initialize(board = empty_board)
