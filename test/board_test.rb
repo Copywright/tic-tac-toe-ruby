@@ -78,6 +78,10 @@ class BoardTest < MiniTest::Test
       @board = Board.new
     end
 
+    it "should have no winner initially" do
+      assert_nil @board.winner
+    end
+
     it "should correctly detect matching rows" do
       3.times do |i|
         positions = [0, i]
