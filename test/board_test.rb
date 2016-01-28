@@ -54,9 +54,55 @@ class BoardTest < MiniTest::Test
         @board.assign_piece(positions, "O")
       end
 
-      binding.pry
-
       assert_equal false, @board.available_spaces.any? {|i| i <= 2 }  # 0, 1, 2 (first row) filled.
+    end
+  end
+
+  describe "to_display" do
+    def setup
+      @board = Board.new
+    end
+
+    it "should correctly insert pieces into board text output" do
+      3.times do |i|
+        positions = [0, i]
+        @board.assign_piece(positions, "O")
+      end
+
+      assert_equal 3, @board.to_display.scan(/O/).count
+    end
+  end
+
+  describe "winner" do
+    def setup
+      @board = Board.new
+    end
+
+    it "should correctly detect matching rows" do
+      3.times do |i|
+        positions = [0, i]
+        @board.assign_piece(positions, "O")
+      end
+
+      assert_equal "O", @board.winner
+    end
+
+    it "should correctly detect matching columns" do
+      3.times do |i|
+        positions = [i, 0]
+        @board.assign_piece(positions, "O")
+      end
+
+      assert_equal "O", @board.winner
+    end
+
+    it "should correctly detect diagonal matches" do
+      3.times do |i|
+        positions = [i, i]
+        @board.assign_piece(positions, "O")
+      end
+
+      assert_equal "O", @board.winner
     end
   end
 end

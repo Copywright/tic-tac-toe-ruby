@@ -49,14 +49,14 @@ class Board
   end
 
   def check_columns
-    first_row, second_row, third_row, match = [spaces, ("")].flatten
+    first_row, second_row, third_row, match = Array.new(spaces).push("")
 
     3.times do |i|
-      column = [first_row[i].value, second_row[i].value, third_row[i].value].uniq
-       match = first_row[i].value if column.length == 1
+      column  = [first_row[i].value, second_row[i].value, third_row[i].value].uniq
+      match   = first_row[i].value if column.size == 1 && !first_row[i].value.empty?
     end
 
-    nil if match.empty?
+    match.empty? ? nil : match
   end
 
   def check_diagonal
@@ -69,6 +69,8 @@ class Board
   end
 
   def diagonal_match?(center)
+    return false if center.empty?     # Don't want to declare win on "" value
+
     corners = [0, 4, 6, 8]
     matches = []
 
