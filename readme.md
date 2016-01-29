@@ -1,3 +1,6 @@
+Run
+```sh ruby tic-tac-toe.rb ```
+
 Tic Tac Toe
 =====
 
