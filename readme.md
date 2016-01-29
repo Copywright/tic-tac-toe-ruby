@@ -1,5 +1,5 @@
 Run
-```nruby tic-tac-toe.rb ```
+```ruby tic-tac-toe.rb ```
 
 Tic Tac Toe
 =====
