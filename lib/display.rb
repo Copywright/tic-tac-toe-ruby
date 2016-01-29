@@ -10,11 +10,11 @@ _/  |_|__| ____   _/  |______    ____   _/  |_  ____   ____
  |  | |  \  \___   |  |  / __ \\  \___   |  | (  <_> )  ___/
  |__| |__|\___  >  |__| (____  /\___  >  |__|  \____/ \___  >
               \/             \/     \/                    \/
-".red.on_white.blink
+".red.blink
   end
 
   def self.choose_piece
-    puts "Would you like to be 'X' or 'O'?\n\n".yellow.on_white
+    puts "Would you like to be 'X' or 'O'?\n\n".yellow
   end
 
   def self.you_are(choice)
@@ -22,17 +22,16 @@ _/  |_|__| ____   _/  |______    ____   _/  |_  ____   ____
   end
 
   def self.invalid_choice
-    puts "Oops! Sorry, that wasn't a valid response. Try again! \n\n".red.on_white
+    puts "Oops! Sorry, that wasn't a valid response. Try again! \n\n".red
   end
 
   def self.choose_row
-    puts "Which row would you like to place in? (1-3)\n\n".yellow.on_white
+    puts "Which row would you like to place in? (1-3)\n\n".yellow
   end
 
   def self.choose_column
-    puts "Which column would you like to place in? (1-3)\n\n".yellow.on_white
+    puts "Which column would you like to place in? (1-3)\n\n".yellow
   end
-
 
   def self.play_again
     puts "Would you like to play again?\n\n"
@@ -44,7 +43,7 @@ _/  |_|__| ____   _/  |______    ____   _/  |_  ____   ____
     | +-  |-+-| | + | |-+-         -+-    +   |-+-| |-+-    +
     |   | |   | |   | |               |   |   |   | |  \    |
     ---               ---         ---
-    ".green.on_white.blink
+    ".green.blink
   end
 
   def self.winner
@@ -54,7 +53,7 @@ _/  |_|__| ____   _/  |______    ____   _/  |_  ____   ____
    ||    '|.     ||  ||    |        ||| |||     ||   |   |||
   .||.    ''|...|'    '|..'          |   |     .||. .|.   '|
 
-                                                              \n\n\n".green.on_white.blink
+                                                              \n\n\n".green.blink
   end
 
   def self.loser
@@ -64,7 +63,7 @@ _/      _/    _/_/    _/    _/      _/          _/_/      _/_/_/  _/_/_/_/
   _/      _/    _/  _/    _/      _/        _/    _/    _/_/    _/_/_/
  _/      _/    _/  _/    _/      _/        _/    _/        _/  _/
 _/        _/_/      _/_/        _/_/_/_/    _/_/    _/_/_/    _/_/_/_/
-                                                                             \n\n\n".red.on_white.blink
+                                                                             \n\n\n".red.blink
   end
 
   def initialize(board = empty_board)
@@ -73,22 +72,16 @@ _/        _/_/      _/_/        _/_/_/_/    _/_/    _/_/_/    _/_/_/_/
 
   def insert_piece(position, value, board = @board)
     case position
-    when 0 then board[102] = value
+    when 0 then board[103] = value
     when 1 then board[116] = value
-    when 2 then board[130] = value
-    when 3 then board[439] = value
+    when 2 then board[131] = value
+    when 3 then board[399] = value
     when 4 then board[452] = value
     when 5 then board[466] = value
     when 6 then board[734] = value
     when 7 then board[747] = value
     when 8 then board[761] = value
     end
-  end
-
-  private
-
-  def set_board(board)
-    board.class == Board ? build_board(board) : empty_board
   end
 
   def build_board(board)
@@ -99,6 +92,13 @@ _/        _/_/      _/_/        _/_/_/_/    _/_/    _/_/_/    _/_/_/_/
     end
     new_board
   end
+
+  private
+
+  def set_board(board)
+    board.class == Board ? build_board(board) : empty_board
+  end
+
 
   def empty_board
     "

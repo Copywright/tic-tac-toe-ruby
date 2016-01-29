@@ -1,4 +1,5 @@
 require_relative 'display'
+require 'pry'
 
 class Input
   def self.player_choice
@@ -14,11 +15,11 @@ class Input
     end
   end
 
-  def self.choose_spot
+  def self.choose_row
     loop do
       Display.choose_row
       row = get_input
-      set_choice(row)
+      return set_choice(row) if set_choice(row)
     end
   end
 
@@ -26,7 +27,7 @@ class Input
     loop do
       Display.choose_column
       col = get_input
-      set_choice(col)
+      return set_choice(col) if set_choice(col)
     end
   end
 
@@ -51,8 +52,9 @@ class Input
   end
 
   def self.set_choice(choice)
-    if [1, 2, 3].include?(choice)
-      return choice - 1
+    input = choice.to_i
+    if [1, 2, 3].include?(input)
+      return input - 1
     else
       Display.invalid_choice
     end

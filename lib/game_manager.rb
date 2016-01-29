@@ -8,23 +8,38 @@ class GameManager
   attr_reader :player_piece, :enemy, :board
 
   def initialize
-    @enemy = Enemy.new
     @board = Board.new
   end
 
   def start
     Display.welcome_banner
     @player_piece = Input.player_choice
-    Display.game_has_begun(player_piece)
+    set_enemy
+    Display.game_has_begun
     game_loop
   end
 
   private
 
+  def set_enemy
+    if @player_piece == "X"
+      @enemy = Enemy.new(piece: "O")
+    else
+      @enemy = Enemy.new(piece: "X")
+    end
+  end
+
   def game_loop
-    show_board
-    choose_spot
-    board.winner ? game_over : @enemy.play(board)
+    loop do
+      show_board
+      choose_spot
+      if board.winner
+        game_over
+        break
+      else
+        @enemy.play(board)
+      end
+    end
   end
 
   def show_board
@@ -35,7 +50,7 @@ class GameManager
   def choose_spot
     row = Input.choose_row
     col = Input.choose_column
-    board.assign_piece([row, col], player_piece.green)
+    board.assign_piece([row, col], player_piece)
   end
 
   def game_over
